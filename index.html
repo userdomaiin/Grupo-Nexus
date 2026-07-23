@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grupo Nexus - Consultoria em transformação digital. Desenvolvimento web, marketing digital, design e tecnologia para impulsionar seu negócio.">
+    <meta name="keywords" content="desenvolvimento web, marketing digital, consultoria TI, design, grupo nexus, transformação digital">
+    <meta name="author" content="Grupo Nexus">
+    <meta property="og:title" content="Grupo Nexus - Transformação Digital">
+    <meta property="og:description" content="Soluções digitais inteligentes para impulsionar seu negócio.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <title>Grupo Nexus - Transformação Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A66C2;
+            --primary-dark: #084A8F;
+            --primary-light: #EBF5FF;
+            --primary-gradient: linear-gradient(135deg, #0A66C2 0%, #1a8fe3 100%);
+            --dark: #0A1929;
+            --dark-secondary: #132F4C;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+            --shadow-primary: 0 4px 14px rgba(10, 102, 194, 0.35);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; }
+        .section-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--primary); margin-bottom: 16px;
+        }
+        .section-label::before {
+            content: ''; width: 24px; height: 2px; background: var(--primary); display: block;
+        }
+        .section-title {
+            font-size: 2.5rem; font-weight: 800; color: var(--gray-900);
+            line-height: 1.2; margin-bottom: 20px;
+        }
+        .section-subtitle {
+            font-size: 1.1rem; color: var(--gray-500);
+            max-width: 600px; line-height: 1.7;
+        }
+        .section-header {
+            text-align: center; margin-bottom: 64px;
+        }
+        .section-header .section-subtitle { margin: 0 auto; }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .navbar .container {
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .navbar-brand {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.5rem; font-weight: 800; color: var(--white);
+            transition: var(--transition);
+        }
+        .navbar.scrolled .navbar-brand { color: var(--gray-900); }
+        .navbar-brand-icon {
+            width: 36px; height: 36px; background: var(--white);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .navbar.scrolled .navbar-brand-icon { background: var(--primary); }
+        .navbar-brand-icon svg { width: 20px; height: 20px; color: var(--primary); transition: var(--transition); }
+        .navbar.scrolled .navbar-brand-icon svg { color: var(--white); }
+        .navbar-brand span { background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .navbar.scrolled .navbar-brand span { -webkit-text-fill-color: initial; color: var(--primary); background: none; }
+
+        .nav-links { display: flex; align-items: center; gap: 32px; }
+        .nav-links a {
+            font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.85);
+            transition: var(--transition); position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 2px; background: var(--white);
+            transition: var(--transition);
+        }
+        .navbar.scrolled .nav-links a { color: var(--gray-600); }
+        .navbar.scrolled .nav-links a::after { background: var(--primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .navbar.scrolled .nav-links a:hover { color: var(--primary); }
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            padding: 10px 24px !important;
+            background: var(--white) !important;
+            color: var(--primary) !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: var(--transition) !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .navbar.scrolled .nav-cta {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-md) !important; }
+
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .menu-toggle span {
+            width: 24px; height: 2px; background: var(--white);
+            border-radius: 2px; transition: var(--transition);
+        }
+        .navbar.scrolled .menu-toggle span { background: var(--gray-800); }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden;
+            background: var(--dark);
+            padding-top: 80px;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.3;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(135deg, rgba(10,25,41,0.97) 0%, rgba(10,25,41,0.85) 50%, rgba(10,102,194,0.3) 100%);
+        }
+        .hero-particles {
+            position: absolute; inset: 0; z-index: 1; overflow: hidden;
+        }
+        .hero-particles span {
+            position: absolute; width: 4px; height: 4px;
+            background: rgba(255,255,255,0.15); border-radius: 50%;
+            animation: float-particle 20s infinite;
+        }
+        .hero-particles span:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; width: 6px; height: 6px; }
+        .hero-particles span:nth-child(2) { top: 60%; left: 20%; animation-delay: 2s; }
+        .hero-particles span:nth-child(3) { top: 30%; left: 80%; animation-delay: 4s; width: 5px; height: 5px; }
+        .hero-particles span:nth-child(4) { top: 70%; left: 70%; animation-delay: 6s; }
+        .hero-particles span:nth-child(5) { top: 15%; left: 50%; animation-delay: 8s; width: 3px; height: 3px; }
+        .hero-particles span:nth-child(6) { top: 80%; left: 40%; animation-delay: 10s; width: 5px; height: 5px; }
+        .hero-particles span:nth-child(7) { top: 45%; left: 90%; animation-delay: 12s; }
+        .hero-particles span:nth-child(8) { top: 10%; left: 30%; animation-delay: 14s; width: 3px; height: 3px; }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+            50% { transform: translateY(-30px) scale(1.5); opacity: 0.4; }
+        }
+
+        .hero-content {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 60px; width: 100%;
+        }
+        .hero-text { flex: 1; max-width: 640px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50px; font-size: 0.85rem; color: var(--gray-300);
+            margin-bottom: 24px; backdrop-filter: blur(10px);
+        }
+        .hero-badge-dot {
+            width: 8px; height: 8px; background: #22C55E; border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .hero h1 {
+            font-size: 4rem; font-weight: 900; color: var(--white);
+            line-height: 1.1; margin-bottom: 24px;
+        }
+        .hero h1 .highlight {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem; color: var(--gray-400);
+            line-height: 1.7; margin-bottom: 36px; max-width: 520px;
+        }
+        .hero-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 32px; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600;
+            border: none; cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(10,102,194,0.45);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image {
+            flex: 1; max-width: 480px; position: relative;
+        }
+        .hero-image-wrapper {
+            position: relative; border-radius: var(--radius-lg);
+            overflow: hidden; box-shadow: var(--shadow-xl);
+        }
+        .hero-image-wrapper img {
+            width: 100%; display: block;
+            transition: transform 0.6s ease;
+        }
+        .hero-image-wrapper:hover img { transform: scale(1.03); }
+        .hero-image-wrapper::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(10,102,194,0.1), transparent);
+        }
+        .hero-stats {
+            display: flex; gap: 32px; margin-top: 48px;
+        }
+        .hero-stat h3 {
+            font-size: 2rem; font-weight: 800; color: var(--white);
+        }
+        .hero-stat p {
+            font-size: 0.85rem; color: var(--gray-500); margin: 0;
+        }
+
+        /* SERVICES */
+        .services { background: var(--gray-50); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            right: 0; height: 3px;
+            background: var(--primary-gradient);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+        .service-icon {
+            width: 56px; height: 56px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px; color: var(--primary);
+            transition: var(--transition);
+        }
+        .service-card:hover .service-icon {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .service-card h3 {
+            font-size: 1.2rem; font-weight: 700; color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            font-size: 0.9rem; color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* PORTFOLIO */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+        .portfolio-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        .portfolio-image {
+            height: 260px; overflow: hidden; position: relative;
+        }
+        .portfolio-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .portfolio-card:hover .portfolio-image img { transform: scale(1.05); }
+        .portfolio-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(10,25,41,0.8), transparent);
+            opacity: 0; transition: var(--transition);
+            display: flex; align-items: flex-end; padding: 24px;
+        }
+        .portfolio-card:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay .tag {
+            padding: 6px 14px; background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px); border-radius: 50px;
+            color: white; font-size: 0.8rem; font-weight: 500;
+        }
+        .portfolio-info { padding: 24px; }
+        .portfolio-info h3 {
+            font-size: 1.15rem; font-weight: 700; color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+        .portfolio-info p {
+            font-size: 0.9rem; color: var(--gray-500);
+        }
+
+        /* PROCESS */
+        .process { background: var(--dark); position: relative; overflow: hidden; }
+        .process::before {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(10,102,194,0.1), transparent);
+            pointer-events: none;
+        }
+        .process .section-title { color: var(--white); }
+        .process .section-subtitle { color: var(--gray-400); }
+        .process .section-label { color: var(--gray-300); }
+        .process .section-label::before { background: var(--gray-300); }
+
+        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+        .process-steps::before {
+            content: ''; position: absolute; top: 40px; left: 10%; right: 10%;
+            height: 2px; background: linear-gradient(to right, var(--primary), rgba(255,255,255,0.1));
+        }
+        .process-step { text-align: center; position: relative; }
+        .process-step-number {
+            width: 80px; height: 80px; margin: 0 auto 24px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 800; color: var(--primary);
+            position: relative; z-index: 2;
+            transition: var(--transition);
+        }
+        .process-step:hover .process-step-number {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+        .process-step h3 {
+            font-size: 1.1rem; font-weight: 700; color: var(--white);
+            margin-bottom: 10px;
+        }
+        .process-step p {
+            font-size: 0.85rem; color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        /* DIFFERENTIALS */
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .differential-card {
+            padding: 32px 24px;
+            border-radius: var(--radius);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .differential-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+        .differential-icon {
+            width: 64px; height: 64px; margin: 0 auto 20px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); transition: var(--transition);
+        }
+        .differential-card:hover .differential-icon {
+            background: var(--primary);
+            color: var(--white);
+            transform: rotateY(180deg);
+        }
+        .differential-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+        .differential-card p {
+            font-size: 0.88rem; color: var(--gray-500); line-height: 1.6;
+        }
+
+        /* CLIENTS */
+        .clients { background: var(--gray-50); }
+        .clients-track {
+            display: flex; gap: 48px; align-items: center;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .client-logo {
+            height: 48px; opacity: 0.5;
+            transition: var(--transition);
+            filter: grayscale(1);
+        }
+        .client-logo:hover {
+            opacity: 1; filter: grayscale(0);
+        }
+        .client-logo svg { height: 100%; width: auto; }
+
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .testimonial-stars {
+            display: flex; gap: 4px; margin-bottom: 16px;
+            color: #F59E0B;
+        }
+        .testimonial-text {
+            font-size: 0.95rem; color: var(--gray-600);
+            line-height: 1.7; margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex; align-items: center; gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 48px; height: 48px; border-radius: 50%;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .testimonial-avatar img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .testimonial-name {
+            font-size: 0.95rem; font-weight: 600; color: var(--gray-900);
+        }
+        .testimonial-role {
+            font-size: 0.82rem; color: var(--gray-500);
+        }
+
+        /* TEAM */
+        .team { background: var(--gray-50); }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        .team-photo {
+            height: 280px; overflow: hidden;
+        }
+        .team-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .team-card:hover .team-photo img { transform: scale(1.05); }
+        .team-info { padding: 24px; }
+        .team-info h3 {
+            font-size: 1.1rem; font-weight: 700; color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+        .team-info .role {
+            font-size: 0.88rem; color: var(--primary); font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .team-info p {
+            font-size: 0.85rem; color: var(--gray-500);
+            line-height: 1.6;
+        }
+        .team-social {
+            display: flex; justify-content: center; gap: 12px;
+            margin-top: 16px;
+        }
+        .team-social a {
+            width: 36px; height: 36px;
+            border-radius: 50%; background: var(--gray-100);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gray-500); transition: var(--transition);
+        }
+        .team-social a:hover {
+            background: var(--primary); color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ */
+        .faq-list { max-width: 768px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 20px 0;
+        }
+        .faq-question {
+            display: flex; justify-content: space-between; align-items: center;
+            width: 100%; background: none; border: none;
+            font-size: 1.05rem; font-weight: 600; color: var(--gray-900);
+            cursor: pointer; padding: 4px 0;
+            font-family: inherit; text-align: left;
+            transition: var(--transition);
+        }
+        .faq-question:hover { color: var(--primary); }
+        .faq-question svg {
+            width: 20px; height: 20px; flex-shrink: 0;
+            transition: transform 0.3s ease; color: var(--gray-400);
+        }
+        .faq-question[aria-expanded="true"] svg { transform: rotate(45deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0;
+        }
+        .faq-answer.open { max-height: 300px; padding-top: 16px; }
+        .faq-answer p {
+            font-size: 0.95rem; color: var(--gray-500);
+            line-height: 1.7;
+        }
+
+        /* CONTACT */
+        .contact { background: var(--gray-50); }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info { padding-right: 24px; }
+        .contact-info-item {
+            display: flex; gap: 16px; margin-bottom: 24px;
+        }
+        .contact-info-icon {
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+        }
+        .contact-info-item h4 {
+            font-size: 1rem; font-weight: 600; color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+        .contact-info-item p {
+            font-size: 0.9rem; color: var(--gray-500);
+        }
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-lg);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block; font-size: 0.88rem; font-weight: 500;
+            color: var(--gray-700); margin-bottom: 6px;
+        }
+        .form-control {
+            width: 100%; padding: 14px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.95rem; font-family: inherit;
+            transition: var(--transition);
+            background: var(--gray-50);
+            color: var(--gray-800);
+        }
+        .form-control:focus {
+            outline: none; border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10,102,194,0.1);
+            background: var(--white);
+        }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* MAP */
+        .map-container {
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .map-container iframe {
+            width: 100%; height: 100%; border: 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark);
+            color: var(--gray-300);
+            padding: 80px 0 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand { max-width: 320px; }
+        .footer-brand h3 {
+            font-size: 1.5rem; font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+        .footer-brand p {
+            font-size: 0.9rem; color: var(--gray-500);
+            line-height: 1.7;
+        }
+        .footer h4 {
+            font-size: 1rem; font-weight: 700; color: var(--white);
+            margin-bottom: 20px;
+        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            font-size: 0.9rem; color: var(--gray-400);
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-social {
+            display: flex; gap: 12px; margin-top: 20px;
+        }
+        .footer-social a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gray-400);
+            transition: var(--transition);
+        }
+        .footer-social a:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px;
+        }
+        .footer-bottom p { font-size: 0.85rem; color: var(--gray-500); }
+        .footer-bottom-links { display: flex; gap: 24px; }
+        .footer-bottom-links a {
+            font-size: 0.85rem; color: var(--gray-500);
+            transition: var(--transition);
+        }
+        .footer-bottom-links a:hover { color: var(--primary); }
+
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed; bottom: 24px; right: 24px; z-index: 999;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .whatsapp-tooltip {
+            background: var(--white);
+            padding: 10px 18px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            font-size: 0.88rem; font-weight: 500; color: var(--gray-800);
+            opacity: 0; transform: translateX(10px);
+            transition: var(--transition);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1; transform: translateX(0);
+        }
+        .whatsapp-btn {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            transition: var(--transition);
+            position: relative;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+        }
+        .whatsapp-btn svg { width: 28px; height: 28px; fill: white; }
+        .whatsapp-pulse {
+            position: absolute; inset: 0; border-radius: 50%;
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+
+        /* BACK TO TOP */
+        .back-to-top {
+            position: fixed; bottom: 100px; right: 24px; z-index: 998;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            opacity: 0; pointer-events: none;
+            transition: var(--transition);
+            color: white;
+        }
+        .back-to-top.visible { opacity: 1; pointer-events: all; }
+        .back-to-top:hover { transform: translateY(-3px); box-shadow: var(--shadow-primary); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .differentials-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { grid-template-columns: repeat(2, 1fr); }
+            .process-steps::before { display: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
+            .hero-image { display: none; }
+            .hero-content { justify-content: center; text-align: center; }
+            .hero p { margin: 0 auto 36px; }
+            .hero-actions { justify-content: center; }
+            .hero-stats { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 72px 0; }
+            .section-title { font-size: 1.8rem; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--white); flex-direction: column;
+                padding: 80px 32px 32px; gap: 20px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+                align-items: flex-start;
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { color: var(--gray-700) !important; font-size: 1rem; }
+            .nav-links a::after { background: var(--primary) !important; }
+            .nav-cta { width: 100%; text-align: center !important; justify-content: center !important; }
+            .navbar { padding: 16px 0; }
+            .hero { min-height: 90vh; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .hero-stats { flex-wrap: wrap; gap: 16px; }
+            .hero-stat h3 { font-size: 1.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .differentials-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .menu-overlay {
+                position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+                z-index: 998; opacity: 0; pointer-events: none;
+                transition: var(--transition);
+            }
+            .menu-overlay.active { opacity: 1; pointer-events: all; }
+            .contact-form { padding: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; justify-content: center; }
+            .whatsapp-btn { width: 52px; height: 52px; }
+            .whatsapp-btn svg { width: 24px; height: 24px; }
+            .back-to-top { right: 16px; width: 40px; height: 40px; }
+        }
+
+        /* UTILITIES */
+        .text-center { text-align: center; }
+        .mt-16 { margin-top: 16px; }
+        .mt-24 { margin-top: 24px; }
+        .mt-32 { margin-top: 32px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-24 { margin-bottom: 24px; }
+
+        .hidden { display: none !important; }
+
+        /* AOS FIX */
+        [data-aos] { pointer-events: none; }
+        .aos-animate { pointer-events: auto; }
+
+        /* SMOOTH ANIMATIONS FOR FORM FEEDBACK */
+        .form-success {
+            display: none; padding: 16px; background: #F0FDF4;
+            border: 1px solid #BBF7D0; border-radius: 8px;
+            color: #166534; font-size: 0.9rem; font-weight: 500; text-align: center;
+        }
+        .form-success.show { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- MENU OVERLAY -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="navbar-brand">
+                <div class="navbar-brand-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <span>Grupo Nexus</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#servicos">Serviços</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#processo">Processo</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato" class="nav-cta">Solicitar Orçamento</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80" alt="Escritório moderno" loading="lazy">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="container" style="position:relative;z-index:2;width:100%;">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up" data-aos-duration="800">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Consultoria em Transformação Digital
+                    </div>
+                    <h1>
+                        Transformamos desafios em<br>
+                        <span class="highlight">soluções digitais</span> inteligentes
+                    </h1>
+                    <p>Somos o Grupo Nexus, uma consultoria especializada em transformação digital. Criamos experiências que conectam sua marca ao futuro com estratégia, design e tecnologia de ponta.</p>
+                    <div class="hero-actions">
+                        <a href="#contato" class="btn btn-primary">
+                            Solicitar Orçamento
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                        <a href="#portfolio" class="btn btn-secondary">
+                            Ver Portfólio
+                        </a>
+                    </div>
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                        <div class="hero-stat">
+                            <h3>280+</h3>
+                            <p>Projetos Entregues</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>150+</h3>
+                            <p>Clientes Atendidos</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>98%</h3>
+                            <p>Satisfação</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-duration="800">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80" alt="Equipe Nexus trabalhando" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section services" id="servicos">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Nossos Serviços</span>
+                <h2 class="section-title">Soluções completas para<br>sua transformação digital</h2>
+                <p class="section-subtitle">Oferecemos um ecossistema completo de serviços digitais para impulsionar o crescimento do seu negócio com excelência e inovação.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criamos sites institucionais, sistemas web e plataformas digitais sob medida, com performance excepcional e design centrado no usuário.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Marketing Digital</h3>
+                    <p>Estratégias completas de marketing digital para alavancar sua presença online, com gestão de tráfego, SEO, conteúdo e conversão.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Consultoria em TI</h3>
+                    <p>Assessoria especializada em tecnologia da informação para otimizar processos, reduzir custos e impulsionar a inovação na sua empresa.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    </div>
+                    <h3>Design Gráfico</h3>
+                    <p>Criamos identidades visuais marcantes, branding completo e materiais de design que comunicam a essência da sua marca.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>Suporte Técnico</h3>
+                    <p>Suporte contínuo e manutenção especializada de sistemas, com equipe disponível para garantir o funcionamento ininterrupto do seu negócio.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                    </div>
+                    <h3>Cloud & Infraestrutura</h3>
+                    <p>Soluções completas em nuvem e infraestrutura digital, garantindo escalabilidade, segurança e alto desempenho para sua operação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFÓLIO -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Portfólio</span>
+                <h2 class="section-title">Projetos que transformam<br>negócios em referências</h2>
+                <p class="section-subtitle">Conheça alguns dos projetos que desenvolvemos com dedicação, estratégia e excelência técnica.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Painel de gestão empresarial" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="tag">Sistema Web</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>NexaGestão</h3>
+                        <p>Plataforma completa de gestão empresarial com dashboards inteligentes e automação de processos.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80" alt="E-commerce moderno" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="tag">E-commerce</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>MegaStore Online</h3>
+                        <p>E-commerce de alto desempenho com experiência de compra otimizada e integração com ERP.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Aplicativo mobile" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="tag">Aplicativo Mobile</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>FoodExpress</h3>
+                        <p>Aplicativo de delivery com rastreamento em tempo real, cardápio digital e sistema de pagamentos.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Site institucional" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="tag">Site Institucional</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Construtora Nova Era</h3>
+                        <p>Site institucional premium com tour virtual, galeria de projetos e blog corporativo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-32" data-aos="fade-up">
+                <a href="#contato" class="btn btn-primary">
+                    Solicitar Orçamento
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="section process" id="processo">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Nosso Processo</span>
+                <h2 class="section-title">Como transformamos suas<br>ideias em resultados reais</h2>
+                <p class="section-subtitle">Metodologia estruturada em quatro etapas para garantir entregas de excelência dentro do prazo.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+                    <div class="process-step-number">01</div>
+                    <h3>Descoberta</h3>
+                    <p>Mergulhamos no seu negócio para entender objetivos, desafios e oportunidades. Realizamos pesquisas e entrevistas para alinhar expectativas.</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="150">
+                    <div class="process-step-number">02</div>
+                    <h3>Estratégia</h3>
+                    <p>Planejamos cada detalhe do projeto com roadmap definido, métricas de sucesso e cronograma transparente.</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step-number">03</div>
+                    <h3>Criação</h3>
+                    <p>Desenvolvemos com metodologias ágeis, design de ponta e tecnologia de ponta. Entregamos valor em ciclos rápidos.</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="450">
+                    <div class="process-step-number">04</div>
+                    <h3>Entrega & Suporte</h3>
+                    <p>Lançamos o projeto com acompanhamento contínuo, suporte dedicado e otimizações baseadas em dados reais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section" id="diferenciais">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Diferenciais</span>
+                <h2 class="section-title">Por que escolher<br>o Grupo Nexus?</h2>
+                <p class="section-subtitle">Mais que uma prestadora de serviços, somos parceiros comprometidos com o sucesso do seu negócio.</p>
+            </div>
+            <div class="differentials-grid">
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Cada cliente é único. Desenvolvemos soluções sob medida com acompanhamento próximo e suporte humanizado em todas as etapas.</p>
+                </div>
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Metodologia Ágil</h3>
+                    <p>Trabalhamos com Scrum e entregas incrementais, garantindo transparência, adaptabilidade e resultados mais rápidos.</p>
+                </div>
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Suporte 24 Horas</h3>
+                    <p>Equipe técnica disponível para suporte contínuo, com monitoramento ativo e resposta rápida para qualquer demanda.</p>
+                </div>
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Resultados Mensuráveis</h3>
+                    <p>Tudo que fazemos é orientado por dados. Relatórios claros e métricas objetivas para acompanhar o retorno do seu investimento.</p>
+                </div>
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Equipe Especializada</h3>
+                    <p>Profissionais certificados e atualizados com as melhores práticas do mercado, prontos para resolver desafios complexos.</p>
+                </div>
+                <div class="differential-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="differential-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <h3>Tecnologia de Ponta</h3>
+                    <p>Utilizamos as melhores ferramentas, frameworks e plataformas do mercado para garantir inovação e qualidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section class="section clients" id="clientes">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Clientes</span>
+                <h2 class="section-title">Empresas que confiam<br>no nosso trabalho</h2>
+                <p class="section-subtitle">Temos o orgulho de colaborar com marcas de diversos segmentos, sempre gerando resultados expressivos.</p>
+            </div>
+            <div class="clients-track" data-aos="fade-up">
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">TechCore</text></svg>
+                </div>
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">VivaSaúde</text></svg>
+                </div>
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">Nova Era</text></svg>
+                </div>
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">GreenLife</text></svg>
+                </div>
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">AlphaTech</text></svg>
+                </div>
+                <div class="client-logo">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="40" rx="4" fill="#E2E8F0"/><text x="60" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="16" fill="#64748B">BelezaPura</text></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="section" id="depoimentos">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="section-title">O que nossos clientes<br>dizem sobre nós</h2>
+                <p class="section-subtitle">A satisfação dos nossos clientes é o nosso maior reconhecimento e a prova do valor que entregamos.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="testimonial-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"O Grupo Nexus transformou completamente nossa presença digital. O site superou todas as expectativas e os resultados de vendas aumentaram 40% nos primeiros três meses."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Maria Silva" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Maria Silva</div>
+                            <div class="testimonial-role">CEO, TechSolutions</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Profissionalismo e qualidade excepcionais. A equipe do Grupo Nexus entendeu exatamente o que precisávamos e entregou um trabalho que superou nossas expectativas."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="João Santos" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">João Santos</div>
+                            <div class="testimonial-role">Diretor, Construtora Nova Era</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-stars">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="testimonial-text">"Desde o primeiro contato, sentimos que estávamos em boas mãos. O suporte é ágil, a comunicação é transparente e os resultados falam por si. Recomendo de olhos fechados."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Ana Oliveira" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Ana Oliveira</div>
+                            <div class="testimonial-role">Fundadora, Beleza Pura</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EQUIPE -->
+    <section class="section team" id="equipe">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Equipe</span>
+                <h2 class="section-title">Conheça quem faz<br>o Nexus acontecer</h2>
+                <p class="section-subtitle">Profissionais apaixonados pelo que fazem, unidos pelo propósito de transformar negócios através da tecnologia.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Carlos Mendes" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Carlos Mendes</h3>
+                        <div class="role">CEO & Fundador</div>
+                        <p>Empreendedor serial com 15 anos de experiência em tecnologia e inovação digital.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="Juliana Costa" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Juliana Costa</h3>
+                        <div class="role">Diretora de Operações</div>
+                        <p>Especialista em gestão de projetos e processos, garantindo entregas impecáveis.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt="Rafael Lima" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rafael Lima</h3>
+                        <div class="role">CTO</div>
+                        <p>Arquiteto de soluções com vasta experiência em desenvolvimento de sistemas complexos.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Fernanda Alves" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Fernanda Alves</h3>
+                        <div class="role">Head de Design</div>
+                        <p>Designer apaixonada por criar experiências visuais que encantam e convertem.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Pedro Souza" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Pedro Souza</h3>
+                        <div class="role">Desenvolvedor Sênior</div>
+                        <p>Especialista em desenvolvimento full-stack com foco em performance e escalabilidade.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-photo">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Lúcia Barros" loading="lazy">
+                    </div>
+                    <div class="team-info">
+                        <h3>Lúcia Barros</h3>
+                        <div class="role">Head de Marketing</div>
+                        <p>Estrategista digital com expertise em Growth Marketing e posicionamento de marca.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tire suas principais dúvidas sobre nossos serviços e processos de trabalho.</p>
+            </div>
+            <div class="faq-list" data-aos="fade-up">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Quanto tempo leva para desenvolver um site?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O prazo varia conforme a complexidade do projeto. Um site institucional leva em média de 15 a 30 dias. Sistemas web mais complexos podem levar de 60 a 90 dias. Durante a fase de descoberta, definimos um cronograma detalhado e transparente com todos os marcos do projeto.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Quais formas de pagamento vocês aceitam?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Aceitamos pagamentos via PIX, boleto bancário, cartão de crédito (parcelado em até 12x) e transferência bancária. Trabalhamos com condições especiais para pessoas jurídicas e planos de pagamento personalizados para projetos de maior porte.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Vocês oferecem suporte após a entrega do projeto?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Oferecemos planos de suporte contínuo e manutenção para todos os nossos projetos. Isso inclui atualizações de segurança, correções de bugs, suporte técnico e melhorias evolutivas. Você pode contratar o pacote que melhor se adequa às suas necessidades.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Como funciona o processo de orçamento?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você entra em contato conosco pelo formulário do site ou WhatsApp. Agendamos uma reunião de alinhamento para entender seu projeto. Elaboramos uma proposta detalhada com escopo, prazos e investimento. Após sua aprovação, iniciamos o desenvolvimento com cronograma definido.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Vocês trabalham com empresas de outros estados?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Com certeza! Atendemos clientes em todo o Brasil de forma 100% remota. Utilizamos ferramentas modernas de comunicação e gestão de projetos para garantir total transparência e proximidade, independentemente da localização geográfica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section contact" id="contato">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Contato</span>
+                <h2 class="section-title">Vamos transformar seu<br>negócio juntos?</h2>
+                <p class="section-subtitle">Solicite um orçamento sem compromisso e descubra como podemos impulsionar sua empresa.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Av. Paulista, 1000 - Bela Vista<br>São Paulo, SP - 01310-100</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-8888</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@gruponexus.com.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Seg a Sex: 8h às 18h | Sáb: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" class="form-control" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" class="form-control" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" class="form-control" placeholder="(11) 99999-8888">
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" class="form-control">
+                                <option value="">Selecione um assunto</option>
+                                <option value="orcamento">Solicitar Orçamento</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="parceria">Parceria</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" class="form-control" placeholder="Conte-nos sobre seu projeto..." required></textarea>
+                        </div>
+                        <div class="form-success" id="formSuccess">
+                            Mensagem enviada com sucesso! Entraremos em contato em até 24 horas.
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+                            Enviar Mensagem
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="section" id="mapa" style="padding-bottom:0;">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up" style="margin-bottom:40px;">
+                <span class="section-label">Localização</span>
+                <h2 class="section-title">Onde nos encontrar</h2>
+            </div>
+        </div>
+        <div class="map-container" data-aos="fade-up" style="border-radius:0;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197490886986!2d-46.6540!3d-23.5610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8f0b5c7c5%3A0x8f0b5c7c5f0b5c7c!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="footer" id="rodape">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Grupo Nexus</h3>
+                    <p>Consultoria especializada em transformação digital. Criamos soluções que conectam sua marca ao futuro com estratégia, design e tecnologia de ponta.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Desenvolvimento Web</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                        <li><a href="#">Consultoria em TI</a></li>
+                        <li><a href="#">Design Gráfico</a></li>
+                        <li><a href="#">Cloud & Infraestrutura</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Empresa</h4>
+                    <ul class="footer-links">
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#processo">Processo</a></li>
+                        <li><a href="#diferenciais">Diferenciais</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Suporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                        <li><a href="#">Canal de Ética</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Grupo Nexus. Todos os direitos reservados.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <div class="whatsapp-float">
+        <div class="whatsapp-tooltip">Fale conosco pelo WhatsApp</div>
+        <a href="https://wa.me/5511999998888?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Fale conosco pelo WhatsApp">
+            <span class="whatsapp-pulse"></span>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS INIT
+        AOS.init({
+            duration: 600,
+            once: true,
+            offset: 40,
+            easing: 'ease-out-cubic'
+        });
+
+        // NAVBAR SCROLL
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const heroHeight = document.getElementById('hero').offsetHeight;
+
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (scrollY > heroHeight * 0.5) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            lastScroll = scrollY;
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // MOBILE MENU TOGGLE
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                if (navLinks.classList.contains('open')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // FAQ ACCORDION
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.faq-question').forEach(function(b) {
+                    b.setAttribute('aria-expanded', 'false');
+                    b.nextElementSibling.classList.remove('open');
+                });
+                if (!isOpen) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.nextElementSibling.classList.add('open');
+                }
+            });
+        });
+
+        // FORM SUBMIT
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successEl = document.getElementById('formSuccess');
+            successEl.classList.add('show');
+            this.reset();
+            setTimeout(function() {
+                successEl.classList.remove('show');
+            }, 5000);
+        });
+
+        // SMOOTH SCROLL FOR ANCHOR LINKS (fallback)
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = navbar.offsetHeight + 10;
+                    const targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
